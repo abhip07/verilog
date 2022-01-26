@@ -1,3 +1,5 @@
+// Code your testbench here
+// or browse Examples
 // half adder test
 
 `include "half_adder.v"
@@ -19,6 +21,10 @@ module half_adder_tb;
 
   initial
     begin
+      
+      $dumpfile("gates_wave.vcd");
+      $dumpvars(0, half_adder_inst);
+      
       in1 = 1'b0;
       in2 = 1'b0;
       #10;
