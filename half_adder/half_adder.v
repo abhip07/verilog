@@ -1,3 +1,4 @@
+// Code your design here
 // Half Adder in Verilog HDL
 module half_adder
   (
