@@ -1,0 +1,40 @@
+$date
+	Thu Jan 27 06:44:16 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module encoder_tb $end
+$scope module encoder_inst $end
+$var wire 1 ! enable $end
+$var wire 16 " input_16 [15:0] $end
+$var reg 4 # out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 #
+b0 "
+1!
+$end
+#10
+b11 #
+b1000 "
+#20
+b0 #
+b101 "
+#30
+b1000010000 "
+#40
+b10000000100000 "
+#50
+b110 #
+b1000000 "
+#60
+b0 #
+b11010000000 "
+#70
