@@ -1,0 +1,97 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x22f8560 .scope module, "test_mux" "test_mux" 2 5;
+ .timescale 0 0;
+v0x230d940_0 .var "a", 3 0;
+v0x230da20_0 .var "b", 3 0;
+v0x230daf0_0 .var "c", 3 0;
+v0x230dbf0_0 .var "d", 3 0;
+v0x230dcc0_0 .net "out", 3 0, L_0x230e200;  1 drivers
+v0x230dd60_0 .var "s0", 0 0;
+v0x230de30_0 .var "s1", 0 0;
+S_0x22f86e0 .scope module, "mux_test" "mux_4x1" 2 17, 3 9 0, S_0x22f8560;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a"
+    .port_info 1 /INPUT 4 "b"
+    .port_info 2 /INPUT 4 "c"
+    .port_info 3 /INPUT 4 "d"
+    .port_info 4 /INPUT 1 "s0"
+    .port_info 5 /INPUT 1 "s1"
+    .port_info 6 /OUTPUT 4 "out"
+v0x22f6830_0 .net *"_s0", 3 0, L_0x230df00;  1 drivers
+v0x230d070_0 .net *"_s2", 3 0, L_0x230e0c0;  1 drivers
+v0x230d150_0 .net "a", 3 0, v0x230d940_0;  1 drivers
+v0x230d240_0 .net "b", 3 0, v0x230da20_0;  1 drivers
+v0x230d320_0 .net "c", 3 0, v0x230daf0_0;  1 drivers
+v0x230d450_0 .net "d", 3 0, v0x230dbf0_0;  1 drivers
+v0x230d530_0 .net "out", 3 0, L_0x230e200;  alias, 1 drivers
+v0x230d610_0 .net "s0", 0 0, v0x230dd60_0;  1 drivers
+v0x230d6d0_0 .net "s1", 0 0, v0x230de30_0;  1 drivers
+L_0x230df00 .functor MUXZ 4, v0x230daf0_0, v0x230dbf0_0, v0x230de30_0, C4<>;
+L_0x230e0c0 .functor MUXZ 4, v0x230d940_0, v0x230da20_0, v0x230de30_0, C4<>;
+L_0x230e200 .functor MUXZ 4, L_0x230e0c0, L_0x230df00, v0x230dd60_0, C4<>;
+    .scope S_0x22f8560;
+T_0 ;
+    %movi 8, 2, 4;
+    %set/v v0x230d940_0, 8, 4;
+    %end;
+    .thread T_0;
+    .scope S_0x22f8560;
+T_1 ;
+    %movi 8, 9, 4;
+    %set/v v0x230da20_0, 8, 4;
+    %end;
+    .thread T_1;
+    .scope S_0x22f8560;
+T_2 ;
+    %movi 8, 14, 4;
+    %set/v v0x230daf0_0, 8, 4;
+    %end;
+    .thread T_2;
+    .scope S_0x22f8560;
+T_3 ;
+    %movi 8, 3, 4;
+    %set/v v0x230dbf0_0, 8, 4;
+    %end;
+    .thread T_3;
+    .scope S_0x22f8560;
+T_4 ;
+    %set/v v0x230dd60_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_0x22f8560;
+T_5 ;
+    %set/v v0x230de30_0, 0, 1;
+    %end;
+    .thread T_5;
+    .scope S_0x22f8560;
+T_6 ;
+    %vpi_call/w 2 31 "$dumpfile", "dump.vcd" {0 0};
+    %vpi_call/w 2 32 "$dumpvars", 2'sb01, v0x230d940_0, v0x230da20_0, v0x230daf0_0, v0x230dbf0_0, v0x230dd60_0, v0x230de30_0, v0x230dcc0_0 {0 0};
+    %set/v v0x230dd60_0, 0, 1;
+    %set/v v0x230de30_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0x230dd60_0, 1, 1;
+    %set/v v0x230de30_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0x230dd60_0, 0, 1;
+    %set/v v0x230de30_0, 0, 1;
+    %delay 5, 0;
+    %set/v v0x230dd60_0, 1, 1;
+    %set/v v0x230de30_0, 0, 1;
+    %delay 5, 0;
+    %end;
+    .thread T_6;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "./4x1_mux.v";
