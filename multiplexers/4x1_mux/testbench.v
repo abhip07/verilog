@@ -9,7 +9,7 @@ module test_mux;
   reg [3:0] c = 4'b1110;
   reg [3:0] d = 4'b0011;
   
-  reg s0=0, s1=0;
+  reg s0=1'b0, s1=1'b0;
   
   wire [3:0] out;
   
