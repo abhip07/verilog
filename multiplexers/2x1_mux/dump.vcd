@@ -1,0 +1,39 @@
+$date
+	Fri Jan 28 06:58:02 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mux_2x1_tb $end
+$scope module mux_test $end
+$var wire 4 ! in1 [3:0] $end
+$var wire 4 " in2 [3:0] $end
+$var wire 1 # select $end
+$var wire 4 $ out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1011 $
+1#
+b1011 "
+b10 !
+$end
+#5
+b1111 $
+b1110 "
+b1111 !
+0#
+#10
+b11 $
+b11 "
+b1100 !
+1#
+#15
+b1100 $
+0#
+#20

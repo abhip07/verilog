@@ -1,0 +1,72 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x1d7bae0 .scope module, "mux_2x1_tb" "mux_2x1_tb" 2 5;
+ .timescale 0 0;
+v0x1d8df00_0 .var "in1", 3 0;
+v0x1d8dfe0_0 .var "in2", 3 0;
+v0x1d8e0b0_0 .net "out", 3 0, L_0x1d8e280;  1 drivers
+v0x1d8e1b0_0 .var "select", 0 0;
+S_0x1d7bc60 .scope module, "mux_test" "mux_2x1" 2 14, 3 3 0, S_0x1d7bae0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "select"
+    .port_info 1 /INPUT 4 "in1"
+    .port_info 2 /INPUT 4 "in2"
+    .port_info 3 /OUTPUT 4 "out"
+v0x1d7a830_0 .net "in1", 3 0, v0x1d8df00_0;  1 drivers
+v0x1d8dbc0_0 .net "in2", 3 0, v0x1d8dfe0_0;  1 drivers
+v0x1d8dca0_0 .net "out", 3 0, L_0x1d8e280;  alias, 1 drivers
+v0x1d8dd90_0 .net "select", 0 0, v0x1d8e1b0_0;  1 drivers
+L_0x1d8e280 .functor MUXZ 4, v0x1d8df00_0, v0x1d8dfe0_0, v0x1d8e1b0_0, C4<>;
+    .scope S_0x1d7bae0;
+T_0 ;
+    %movi 8, 3, 4;
+    %set/v v0x1d8df00_0, 8, 4;
+    %end;
+    .thread T_0;
+    .scope S_0x1d7bae0;
+T_1 ;
+    %movi 8, 11, 4;
+    %set/v v0x1d8dfe0_0, 8, 4;
+    %end;
+    .thread T_1;
+    .scope S_0x1d7bae0;
+T_2 ;
+    %set/v v0x1d8e1b0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x1d7bae0;
+T_3 ;
+    %vpi_call/w 2 27 "$dumpfile", "dump.vcd" {0 0};
+    %vpi_call/w 2 28 "$dumpvars", 1'sb0, S_0x1d7bc60 {0 0};
+    %set/v v0x1d8e1b0_0, 1, 1;
+    %movi 8, 2, 4;
+    %set/v v0x1d8df00_0, 8, 4;
+    %delay 5, 0;
+    %set/v v0x1d8e1b0_0, 0, 1;
+    %set/v v0x1d8df00_0, 1, 4;
+    %movi 8, 14, 4;
+    %set/v v0x1d8dfe0_0, 8, 4;
+    %delay 5, 0;
+    %set/v v0x1d8e1b0_0, 1, 1;
+    %movi 8, 12, 4;
+    %set/v v0x1d8df00_0, 8, 4;
+    %movi 8, 3, 4;
+    %set/v v0x1d8dfe0_0, 8, 4;
+    %delay 5, 0;
+    %set/v v0x1d8e1b0_0, 0, 1;
+    %delay 5, 0;
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "./2x1_mux.v";
