@@ -90,8 +90,8 @@ module mux_8x1_tb();
       
     end
   
-//  	always #1 in0=~in0;
-// 	always #2 in1=~in1;
+//  always #1 in0=~in0;
+//  always #2 in1=~in1;
 // 	always #3 in2=~in2;
 // 	always #4 in3=~in3;
 // 	always #5 in4=~in4;
