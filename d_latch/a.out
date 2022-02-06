@@ -1,0 +1,84 @@
+#! /usr/share/iverilog-0.10.0/bin/vvp
+:ivl_version "0.10.0 (devel)" "(v0_9_6)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+:vpi_module "v2009";
+S_0x22a9d10 .scope module, "latch_tb" "latch_tb" 2 6;
+ .timescale 0 0;
+v0x22bdd70_0 .var "D", 0 0;
+v0x22bde30_0 .net "Q", 0 0, v0x22bda70_0;  1 drivers
+v0x22bdf00_0 .var "enable", 0 0;
+v0x22be000_0 .var/i "i", 31 0;
+v0x22be0a0_0 .var "reset", 0 0;
+S_0x22a8830 .scope module, "test_latch" "d_latch" 2 14, 3 1 0, S_0x22a9d10;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "D"
+    .port_info 1 /INPUT 1 "enable"
+    .port_info 2 /INPUT 1 "reset"
+    .port_info 3 /OUTPUT 1 "Q"
+v0x22a8a70_0 .net "D", 0 0, v0x22bdd70_0;  1 drivers
+v0x22bda70_0 .var "Q", 0 0;
+v0x22bdb30_0 .net "enable", 0 0, v0x22bdf00_0;  1 drivers
+v0x22bdc00_0 .net "reset", 0 0, v0x22be0a0_0;  1 drivers
+E_0x22aa120 .event edge, v0x22bdc00_0, v0x22bdb30_0, v0x22a8a70_0;
+    .scope S_0x22a8830;
+T_0 ;
+    %wait E_0x22aa120;
+    %load/v 8, v0x22bdc00_0, 1;
+    %inv 8, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22bda70_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x22bdb30_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %load/v 8, v0x22a8a70_0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22bda70_0, 0, 8;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x22a9d10;
+T_1 ;
+    %vpi_call/w 2 24 "$dumpfile", "dump.vcd" {0 0};
+    %vpi_call/w 2 25 "$dumpvars", 1'sb0, S_0x22a8830 {0 0};
+    %vpi_call/w 2 27 "$monitor", "[%0t] D = %d en = %d reset = %d Q = %d", $time, v0x22bdd70_0, v0x22bdf00_0, v0x22be0a0_0, v0x22bde30_0 {0 0};
+    %set/v v0x22bdd70_0, 1, 1;
+    %set/v v0x22bdf00_0, 0, 1;
+    %set/v v0x22be0a0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0x22be0a0_0, 1, 1;
+    %set/v v0x22be000_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v0x22be000_0, 32;
+    %cmpi/u 8, 10, 32;
+    %inv 4, 1;
+    %jmp/0xz T_1.1, 4;
+    %delay 5, 0;
+    %load/v 8, v0x22bdf00_0, 1;
+    %inv 8, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22bdf00_0, 0, 8;
+    %delay 5, 0;
+    %load/v 8, v0x22be000_0, 32;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x22bdd70_0, 0, 8;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0x22be000_0, 32;
+    %set/v v0x22be000_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "./d_latch.v";
